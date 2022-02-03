@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://spell.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dude.png" type="Texture" id=3]
+[ext_resource path="res://wand.gd" type="Script" id=4]
+[ext_resource path="res://arm.gd" type="Script" id=5]
+[ext_resource path="res://arm.png" type="Texture" id=6]
+[ext_resource path="res://wand.png" type="Texture" id=7]
+[ext_resource path="res://hurtbox.gd" type="Script" id=8]
+[ext_resource path="res://broom.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 20, 6 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20, 16 )
+
+[node name="player" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+speed = 1000.0
+health_regen = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="pivot" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="arm" type="Node2D" parent="pivot"]
+use_parent_material = true
+position = Vector2( 9, -2 )
+script = ExtResource( 5 )
+
+[node name="arm_sprite" type="Sprite" parent="pivot/arm"]
+use_parent_material = true
+position = Vector2( -9, 0 )
+texture = ExtResource( 6 )
+
+[node name="wand" type="Node2D" parent="pivot/arm"]
+use_parent_material = true
+position = Vector2( 11, 3 )
+script = ExtResource( 4 )
+spell = ExtResource( 2 )
+
+[node name="wand_sprite" type="Sprite" parent="pivot/arm/wand"]
+use_parent_material = true
+position = Vector2( -20, -4 )
+texture = ExtResource( 7 )
+
+[node name="wand2" type="Node2D" parent="pivot/arm/wand"]
+rotation = 0.0872665
+script = ExtResource( 4 )
+spell = ExtResource( 2 )
+main_spell_cost = 0.0
+
+[node name="wand3" type="Node2D" parent="pivot/arm/wand"]
+rotation = -0.0872665
+script = ExtResource( 4 )
+spell = ExtResource( 2 )
+main_spell_cost = 0.0
+
+[node name="broom_sprite" type="Sprite" parent="pivot"]
+texture = ExtResource( 9 )
+
+[node name="body_sprite" type="Sprite" parent="pivot"]
+use_parent_material = true
+texture = ExtResource( 3 )
+
+[node name="hurtbox" type="Area2D" parent="pivot"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hurtbox"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="ready" from="." to="pivot/arm/wand" method="set_caster_to_owner"]
+[connection signal="ready" from="." to="pivot/arm/wand/wand2" method="set_caster_to_owner"]
+[connection signal="ready" from="." to="pivot/arm/wand/wand3" method="set_caster_to_owner"]
+[connection signal="area_entered" from="pivot/hurtbox" to="." method="_on_hurtbox_area_entered"]

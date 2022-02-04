@@ -305,7 +305,7 @@ tile_data = PoolIntArray( -17497988, 0, 0, -17497987, 0, 0, -17497986, 0, 0, -17
 [node name="skill_pickup" parent="." instance=ExtResource( 10 )]
 
 [node name="skill_pickup2" parent="." instance=ExtResource( 15 )]
-position = Vector2( 164, -2 )
+position = Vector2( 0, 140 )
 
 [connection signal="highscore" from="." to="HUD/HBoxContainer/VBoxContainer/highscore" method="set_counter"]
 [connection signal="dead" from="player" to="." method="_on_player_dead"]

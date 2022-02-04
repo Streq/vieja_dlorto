@@ -89,7 +89,6 @@ texture = ExtResource( 6 )
 [node name="hand" type="Node2D" parent="pivot/arm/swing_node"]
 position = Vector2( 11, 3 )
 rotation = -1.49012e-08
-scale = Vector2( 1, 1 )
 
 [node name="Node2D" type="Node2D" parent="pivot/arm"]
 

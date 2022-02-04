@@ -9,10 +9,10 @@
 [ext_resource path="res://bar_foreground.png" type="Texture" id=7]
 [ext_resource path="res://kills.gd" type="Script" id=8]
 [ext_resource path="res://bar.gd" type="Script" id=9]
-[ext_resource path="res://infinite_mana.gd" type="Script" id=10]
+[ext_resource path="res://skills/skill_pickup.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://weapon_tile.png" type="Texture" id=12]
-[ext_resource path="res://wand_tile.png" type="Texture" id=13]
+[ext_resource path="res://weapons_hud.gd" type="Script" id=13]
 [ext_resource path="res://font.tres" type="DynamicFont" id=14]
 
 [sub_resource type="DynamicFont" id=7]
@@ -95,10 +95,10 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="main" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 layer = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 anchor_right = 1.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
@@ -108,15 +108,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="Control" type="VBoxContainer" parent="HUD/HBoxContainer"]
 margin_right = 512.0
 margin_bottom = 216.0
 rect_min_size = Vector2( 512, 128 )
 
-[node name="Node2D" type="Node2D" parent="CanvasLayer/HBoxContainer/Control"]
+[node name="Node2D" type="Node2D" parent="HUD/HBoxContainer/Control"]
 scale = Vector2( 4, 4 )
 
-[node name="health" type="TextureProgress" parent="CanvasLayer/HBoxContainer/Control/Node2D"]
+[node name="health" type="TextureProgress" parent="HUD/HBoxContainer/Control/Node2D"]
 margin_right = 256.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 256, 32 )
@@ -130,11 +130,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D2" type="Node2D" parent="CanvasLayer/HBoxContainer/Control"]
+[node name="Node2D2" type="Node2D" parent="HUD/HBoxContainer/Control"]
 position = Vector2( 0, 64 )
 scale = Vector2( 4, 4 )
 
-[node name="mana" type="TextureProgress" parent="CanvasLayer/HBoxContainer/Control/Node2D2"]
+[node name="mana" type="TextureProgress" parent="HUD/HBoxContainer/Control/Node2D2"]
 margin_right = 256.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 256, 32 )
@@ -148,42 +148,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="HUD/HBoxContainer"]
 margin_left = 516.0
 margin_right = 662.0
 margin_bottom = 216.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="weapons" type="HBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="weapons" type="HBoxContainer" parent="HUD/HBoxContainer"]
 margin_left = 666.0
 margin_right = 926.0
 margin_bottom = 216.0
 size_flags_horizontal = 3
+script = ExtResource( 13 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/weapons"]
+[node name="0" type="VBoxContainer" parent="HUD/HBoxContainer/weapons"]
 margin_right = 128.0
 margin_bottom = 216.0
 
-[node name="weapon1" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer"]
+[node name="weapon" type="TextureRect" parent="HUD/HBoxContainer/weapons/0"]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 12 )
 stretch_mode = 5
 
-[node name="texture" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer/weapon1"]
+[node name="texture" type="TextureRect" parent="HUD/HBoxContainer/weapons/0/weapon"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 128, 128 )
-texture = ExtResource( 13 )
 expand = true
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer"]
+[node name="Label" type="Label" parent="HUD/HBoxContainer/weapons/0"]
 margin_top = 132.0
 margin_right = 128.0
 margin_bottom = 216.0
@@ -193,19 +193,19 @@ click
 "
 align = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/weapons"]
+[node name="1" type="VBoxContainer" parent="HUD/HBoxContainer/weapons"]
 margin_left = 132.0
 margin_right = 260.0
 margin_bottom = 216.0
 
-[node name="weapon1" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer2"]
+[node name="weapon" type="TextureRect" parent="HUD/HBoxContainer/weapons/1"]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 12 )
 stretch_mode = 5
 
-[node name="texture" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer2/weapon1"]
+[node name="texture" type="TextureRect" parent="HUD/HBoxContainer/weapons/1/weapon"]
 margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 128, 128 )
@@ -215,7 +215,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer2"]
+[node name="Label" type="Label" parent="HUD/HBoxContainer/weapons/1"]
 margin_top = 132.0
 margin_right = 128.0
 margin_bottom = 216.0
@@ -225,19 +225,19 @@ click
 "
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/HBoxContainer"]
 margin_left = 930.0
 margin_right = 1076.0
 margin_bottom = 216.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/HBoxContainer"]
 margin_left = 1080.0
 margin_right = 1280.0
 margin_bottom = 216.0
 
-[node name="kills" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+[node name="kills" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 0 )
@@ -247,7 +247,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="time_til_next" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+[node name="time_til_next" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
 margin_top = 44.0
 margin_right = 200.0
 margin_bottom = 84.0
@@ -279,13 +279,6 @@ rotation = -1.57077
 [node name="Timer" type="Timer" parent="player/spawner"]
 autostart = true
 
-[node name="powerup" type="Node" parent="player"]
-script = ExtResource( 10 )
-
-[node name="Timer" type="Timer" parent="player/powerup"]
-wait_time = 5.0
-autostart = true
-
 [node name="terrain" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
 collision_layer = 8
@@ -294,10 +287,13 @@ tile_data = PoolIntArray( -17497988, 0, 0, -17497987, 0, 0, -17497986, 0, 0, -17
 
 [node name="devil" parent="." instance=ExtResource( 2 )]
 
-[connection signal="health_changed" from="player" to="CanvasLayer/HBoxContainer/Control/Node2D/health" method="set_progress"]
-[connection signal="mana_changed" from="player" to="CanvasLayer/HBoxContainer/Control/Node2D2/mana" method="set_progress"]
-[connection signal="mob_killed" from="player/spawner" to="CanvasLayer/HBoxContainer/VBoxContainer/kills" method="increment"]
-[connection signal="time_til_next" from="player/spawner" to="CanvasLayer/HBoxContainer/VBoxContainer/time_til_next" method="set_counter"]
+[node name="skill_pickup" parent="." instance=ExtResource( 10 )]
+position = Vector2( -5, 1 )
+
+[connection signal="health_changed" from="player" to="HUD/HBoxContainer/Control/Node2D/health" method="set_progress"]
+[connection signal="mana_changed" from="player" to="HUD/HBoxContainer/Control/Node2D2/mana" method="set_progress"]
+[connection signal="skill_changed" from="player" to="HUD/HBoxContainer/weapons" method="set_weapon_hud"]
+[connection signal="mob_killed" from="player/spawner" to="HUD/HBoxContainer/VBoxContainer/kills" method="increment"]
+[connection signal="time_til_next" from="player/spawner" to="HUD/HBoxContainer/VBoxContainer/time_til_next" method="set_counter"]
 [connection signal="timeout" from="player/spawner/Timer" to="player/spawner" method="_on_Timer_timeout"]
-[connection signal="timeout" from="player/powerup/Timer" to="player/powerup" method="_timeout"]
-[connection signal="dead" from="devil" to="CanvasLayer/HBoxContainer/VBoxContainer/kills" method="increment"]
+[connection signal="dead" from="devil" to="HUD/HBoxContainer/VBoxContainer/kills" method="increment"]

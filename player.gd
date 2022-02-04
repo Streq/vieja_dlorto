@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal health_changed(new_val)
 signal mana_changed(new_val)
 signal skill_changed(idx, skill)
-
+signal dead()
 
 export var speed := 2000.0
 export var velocity := Vector2.ZERO
@@ -97,8 +97,6 @@ func _on_hurtbox_area_entered(area):
 	if area.team != team:
 		self.health -= area.get_damage()
 		velocity += area.get_knockback(self)
-		if health <= 0.0:
-			get_tree().reload_current_scene()
 
 func set_mana(val):
 	mana = min(val, max_mana)
@@ -107,6 +105,8 @@ func set_mana(val):
 func set_health(val):
 	health = min(val, max_health)
 	emit_signal("health_changed", health)
+	if health <= 0.0:
+		emit_signal("dead")
 	
 func get_input_dir():
 	return Vector2\

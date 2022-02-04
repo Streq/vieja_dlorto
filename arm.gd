@@ -14,3 +14,4 @@ func _physics_process(delta):
 	#rotate towards the scope
 	var angle = (scope_pivoted_dist).angle()
 	rotation = angle
+	

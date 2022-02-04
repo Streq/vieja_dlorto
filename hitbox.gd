@@ -6,5 +6,5 @@ var team
 func get_damage():
 	return damage
 	
-func get_knockback():
+func get_knockback(target = null):
 	return owner.get_velocity()*0.05

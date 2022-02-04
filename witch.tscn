@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://dude.png" type="Texture" id=3]
@@ -13,6 +13,54 @@ extents = Vector2( 20, 6 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 16 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/arm/swing_node:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "swing0"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/arm/swing_node:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.216188, 1 ),
+"update": 0,
+"values": [ -90.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "swing1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/arm/swing_node:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.216188, 1 ),
+"update": 0,
+"values": [ 90.0, -90.0 ]
+}
 
 [node name="player" type="KinematicBody2D"]
 scale = Vector2( 2, 2 )
@@ -31,12 +79,19 @@ use_parent_material = true
 position = Vector2( 9, -2 )
 script = ExtResource( 5 )
 
-[node name="arm_sprite" type="Sprite" parent="pivot/arm"]
+[node name="swing_node" type="Node2D" parent="pivot/arm"]
+
+[node name="arm_sprite" type="Sprite" parent="pivot/arm/swing_node"]
 position = Vector2( -9, 0 )
+rotation = -1.49012e-08
 texture = ExtResource( 6 )
 
-[node name="hand" type="Node2D" parent="pivot/arm"]
+[node name="hand" type="Node2D" parent="pivot/arm/swing_node"]
 position = Vector2( 11, 3 )
+rotation = -1.49012e-08
+scale = Vector2( 1, 1 )
+
+[node name="Node2D" type="Node2D" parent="pivot/arm"]
 
 [node name="broom_sprite" type="Sprite" parent="pivot"]
 texture = ExtResource( 9 )
@@ -54,5 +109,11 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/RESET = SubResource( 5 )
+anims/swing0 = SubResource( 3 )
+anims/swing1 = SubResource( 4 )
 
 [connection signal="area_entered" from="pivot/hurtbox" to="." method="_on_hurtbox_area_entered"]

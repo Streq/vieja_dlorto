@@ -4,8 +4,11 @@ export var spell : PackedScene
 export var main_spell_cost := 1.0
 export var continuous: bool = true
 
+func set_team(team):
+	$hitbox.team = team
 
 func cast(caster):
+	caster.swing.rotation_degrees = 0
 	caster.mana -= main_spell_cost
 	caster.shooting = true
 	var new_spell = spell.instance()

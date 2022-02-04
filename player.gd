@@ -16,7 +16,9 @@ export (float) var mana := max_mana setget set_mana
 export (float) var mana_regen = 0.5
 export (float) var health_regen = 0.1
 var shooting = false
-onready var hand = $pivot/arm/hand
+onready var hand = $pivot/arm/swing_node/hand
+onready var swing = $pivot/arm/swing_node
+onready var animation = $AnimationPlayer
 onready var skills = [null, null]
 onready var just_pressed = [false, false]
 
@@ -54,7 +56,8 @@ func _physics_process(delta):
 	if dir!=Vector2.ZERO:
 		
 		$pivot.rotation = lerp_angle($pivot.rotation, dir.angle(), 6.0*delta)
-		$pivot.scale.y = sign(dir.x) if dir.x else $pivot.scale.x
+		if !animation.is_playing():
+			$pivot.scale.y = sign(dir.x) if dir.x else $pivot.scale.y
 #		$pivot.transform = Transform2D.IDENTITY\
 #				.rotated(lerp($pivot.rotation*sign(dir.x), Vector2(abs(dir.x), dir.y).angle(), 6.0*delta))\
 #				.scaled(Vector2(sign(dir.x) if dir.x!=0.0 else $pivot.transform.get_scale().y, 1))

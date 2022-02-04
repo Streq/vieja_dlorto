@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "PickupEffect",
+"language": "GDScript",
+"path": "res://pickup/effect.gd"
+}, {
 "base": "Node2D",
 "class": "Skill",
 "language": "GDScript",
 "path": "res://skill.gd"
 } ]
 _global_script_class_icons={
+"PickupEffect": "",
 "Skill": ""
 }
 

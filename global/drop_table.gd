@@ -4,6 +4,7 @@ var table = [
 	{"drop":preload("res://skills/sword/sword_pickup.tscn"), "rate":1.0},
 	{"drop":preload("res://skills/wand/wand_pickup.tscn"), "rate":1.0},
 	{"drop":preload("res://skills/teleport/teleport_pickup.tscn"), "rate":1.0},
+	{"drop":preload("res://pickup/health/health.tscn"), "rate":1.0},
 ]
 
 func get_table_rate():

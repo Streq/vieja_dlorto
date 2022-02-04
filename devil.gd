@@ -1,5 +1,7 @@
 extends Node2D
 
+signal dead()
+
 export var speed := 500.0
 var velocity := Vector2.ZERO
 export var max_health := 10.0 
@@ -30,6 +32,7 @@ func _on_hurtbox_area_entered(area):
 		velocity += area.get_knockback()
 		health -= area.get_damage()
 		if health <= 0.0:
+			emit_signal("dead")
 			queue_free()
 
 

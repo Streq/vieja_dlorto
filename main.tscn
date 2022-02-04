@@ -1,15 +1,23 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://devil.tscn" type="PackedScene" id=2]
 [ext_resource path="res://witch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://spawner.gd" type="Script" id=4]
-[ext_resource path="res://magic_bar.png" type="Texture" id=5]
+[ext_resource path="res://bar_progress.png" type="Texture" id=5]
 [ext_resource path="res://bar_background.png" type="Texture" id=6]
 [ext_resource path="res://bar_foreground.png" type="Texture" id=7]
-[ext_resource path="res://health_bar.png" type="Texture" id=8]
+[ext_resource path="res://kills.gd" type="Script" id=8]
 [ext_resource path="res://bar.gd" type="Script" id=9]
 [ext_resource path="res://infinite_mana.gd" type="Script" id=10]
+[ext_resource path="res://ProggyClean.ttf/ProggyClean.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://weapon_tile.png" type="Texture" id=12]
+[ext_resource path="res://wand_tile.png" type="Texture" id=13]
+[ext_resource path="res://font.tres" type="DynamicFont" id=14]
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 11 )
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -89,33 +97,168 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
-scale = Vector2( 8, 8 )
-transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 
-[node name="health" type="TextureProgress" parent="CanvasLayer"]
-margin_right = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
 margin_bottom = 40.0
-value = 100.0
-texture_under = ExtResource( 6 )
-texture_over = ExtResource( 7 )
-texture_progress = ExtResource( 8 )
-script = ExtResource( 9 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mana" type="TextureProgress" parent="CanvasLayer"]
-margin_top = 8.0
-margin_right = 64.0
-margin_bottom = 48.0
+[node name="Control" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+margin_right = 512.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 512, 128 )
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/HBoxContainer/Control"]
+scale = Vector2( 4, 4 )
+
+[node name="health" type="TextureProgress" parent="CanvasLayer/HBoxContainer/Control/Node2D"]
+margin_right = 256.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 32 )
 value = 100.0
 texture_under = ExtResource( 6 )
 texture_over = ExtResource( 7 )
 texture_progress = ExtResource( 5 )
+tint_progress = Color( 0, 1, 0, 1 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D2" type="Node2D" parent="CanvasLayer/HBoxContainer/Control"]
+position = Vector2( 0, 64 )
+scale = Vector2( 4, 4 )
+
+[node name="mana" type="TextureProgress" parent="CanvasLayer/HBoxContainer/Control/Node2D2"]
+margin_right = 256.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 256, 32 )
+value = 100.0
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 7 )
+texture_progress = ExtResource( 5 )
+tint_progress = Color( 0, 0, 1, 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+margin_left = 516.0
+margin_right = 662.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="weapons" type="HBoxContainer" parent="CanvasLayer/HBoxContainer"]
+margin_left = 666.0
+margin_right = 926.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/weapons"]
+margin_right = 128.0
+margin_bottom = 216.0
+
+[node name="weapon1" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 12 )
+stretch_mode = 5
+
+[node name="texture" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer/weapon1"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer"]
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 7 )
+text = "left
+click
+"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/weapons"]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 216.0
+
+[node name="weapon1" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer2"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 12 )
+stretch_mode = 5
+
+[node name="texture" type="TextureRect" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer2/weapon1"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 128 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/weapons/VBoxContainer2"]
+margin_top = 132.0
+margin_right = 128.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 7 )
+text = "right
+click
+"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+margin_left = 930.0
+margin_right = 1076.0
+margin_bottom = 216.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+margin_left = 1080.0
+margin_right = 1280.0
+margin_bottom = 216.0
+
+[node name="kills" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 14 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="time_til_next" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 200.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 14 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+thing = "spawn_time"
+float_padding = 3
 
 [node name="player" parent="." groups=["player"] instance=ExtResource( 3 )]
 material = SubResource( 6 )
@@ -139,6 +282,10 @@ autostart = true
 [node name="powerup" type="Node" parent="player"]
 script = ExtResource( 10 )
 
+[node name="Timer" type="Timer" parent="player/powerup"]
+wait_time = 5.0
+autostart = true
+
 [node name="terrain" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
 collision_layer = 8
@@ -147,6 +294,10 @@ tile_data = PoolIntArray( -17497988, 0, 0, -17497987, 0, 0, -17497986, 0, 0, -17
 
 [node name="devil" parent="." instance=ExtResource( 2 )]
 
-[connection signal="health_changed" from="player" to="CanvasLayer/health" method="set_progress"]
-[connection signal="mana_changed" from="player" to="CanvasLayer/mana" method="set_progress"]
+[connection signal="health_changed" from="player" to="CanvasLayer/HBoxContainer/Control/Node2D/health" method="set_progress"]
+[connection signal="mana_changed" from="player" to="CanvasLayer/HBoxContainer/Control/Node2D2/mana" method="set_progress"]
+[connection signal="mob_killed" from="player/spawner" to="CanvasLayer/HBoxContainer/VBoxContainer/kills" method="increment"]
+[connection signal="time_til_next" from="player/spawner" to="CanvasLayer/HBoxContainer/VBoxContainer/time_til_next" method="set_counter"]
 [connection signal="timeout" from="player/spawner/Timer" to="player/spawner" method="_on_Timer_timeout"]
+[connection signal="timeout" from="player/powerup/Timer" to="player/powerup" method="_timeout"]
+[connection signal="dead" from="devil" to="CanvasLayer/HBoxContainer/VBoxContainer/kills" method="increment"]

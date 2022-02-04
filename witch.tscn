@@ -35,38 +35,23 @@ position = Vector2( 9, -2 )
 script = ExtResource( 5 )
 
 [node name="arm_sprite" type="Sprite" parent="pivot/arm"]
-use_parent_material = true
 position = Vector2( -9, 0 )
 texture = ExtResource( 6 )
 
-[node name="wand" type="Node2D" parent="pivot/arm"]
+[node name="wand_sprite" type="Sprite" parent="pivot/arm"]
 use_parent_material = true
+position = Vector2( -9, -1 )
+texture = ExtResource( 7 )
+
+[node name="wand" type="Node2D" parent="pivot/arm"]
 position = Vector2( 11, 3 )
 script = ExtResource( 4 )
 spell = ExtResource( 2 )
-
-[node name="wand_sprite" type="Sprite" parent="pivot/arm/wand"]
-use_parent_material = true
-position = Vector2( -20, -4 )
-texture = ExtResource( 7 )
-
-[node name="wand2" type="Node2D" parent="pivot/arm/wand"]
-rotation = 0.0872665
-script = ExtResource( 4 )
-spell = ExtResource( 2 )
-main_spell_cost = 0.0
-
-[node name="wand3" type="Node2D" parent="pivot/arm/wand"]
-rotation = -0.0872665
-script = ExtResource( 4 )
-spell = ExtResource( 2 )
-main_spell_cost = 0.0
 
 [node name="broom_sprite" type="Sprite" parent="pivot"]
 texture = ExtResource( 9 )
 
 [node name="body_sprite" type="Sprite" parent="pivot"]
-use_parent_material = true
 texture = ExtResource( 3 )
 
 [node name="hurtbox" type="Area2D" parent="pivot"]
@@ -81,6 +66,4 @@ shape = SubResource( 2 )
 shape = SubResource( 1 )
 
 [connection signal="ready" from="." to="pivot/arm/wand" method="set_caster_to_owner"]
-[connection signal="ready" from="." to="pivot/arm/wand/wand2" method="set_caster_to_owner"]
-[connection signal="ready" from="." to="pivot/arm/wand/wand3" method="set_caster_to_owner"]
 [connection signal="area_entered" from="pivot/hurtbox" to="." method="_on_hurtbox_area_entered"]

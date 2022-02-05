@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Skill",
 "language": "GDScript",
-"path": "res://skill.gd"
+"path": "res://skills/skill.gd"
 } ]
 _global_script_class_icons={
 "PickupEffect": "",

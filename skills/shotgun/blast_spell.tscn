@@ -13,8 +13,8 @@ extents = Vector2( 24, 2.812 )
 texture = ExtResource( 2 )
 
 [node name="hitbox" parent="." index="2"]
-damage = 5.0
-knockback = 1.0
+damage = 4.0
+knockback = 0.5
 
 [node name="CollisionShape2D" parent="hitbox" index="0"]
 shape = SubResource( 1 )

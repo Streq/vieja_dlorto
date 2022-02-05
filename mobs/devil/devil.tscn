@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://mobs/devil/devil_hitbox.gd" type="Script" id=1]
 [ext_resource path="res://mobs/devil/devil.gd" type="Script" id=2]
 [ext_resource path="res://hitbox/hurtbox.gd" type="Script" id=3]
 [ext_resource path="res://asset/texture/devil.png" type="Texture" id=4]
+[ext_resource path="res://mobs/devil/death_particles.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20.5038, 22.1558 )
@@ -12,11 +13,12 @@ extents = Vector2( 20.5038, 22.1558 )
 extents = Vector2( 20.8187, 21.8408 )
 
 [node name="devil" type="Node2D"]
+modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 drop_rate = 0.1
+death_explosion = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 4 )
 
 [node name="hurtbox" type="Area2D" parent="."]

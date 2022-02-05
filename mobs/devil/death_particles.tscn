@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://pickup/deleter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/texture/explosion_particle.png" type="Texture" id=2]
+[ext_resource path="res://mobs/devil/death_explosion.gd" type="Script" id=3]
+
+[node name="death_particles" type="CPUParticles2D"]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.83
+local_coords = false
+texture = ExtResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 0.58
+linear_accel = -3.87
+script = ExtResource( 3 )
+
+[node name="deleter" parent="." instance=ExtResource( 1 )]

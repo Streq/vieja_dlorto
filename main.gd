@@ -9,7 +9,9 @@ func _ready():
 	emit_signal("highscore", Global.highscore)
 
 func _on_player_dead():
-	Global.highscore = max(kills, Global.highscore)
+	if kills > Global.highscore:
+		Global.highscore = kills
+		Global.save_game()
 	get_tree().reload_current_scene()
 
 

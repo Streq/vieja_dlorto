@@ -9,6 +9,8 @@ var velocity := Vector2.ZERO
 export var max_health := 10.0 
 export (float) var health := max_health
 export (float) var drop_rate := 0.2
+export var death_explosion : PackedScene
+
 
 var target = null
 var team = 1
@@ -39,6 +41,7 @@ func _on_hurtbox_area_entered(area):
 		health -= area.get_damage()
 		if health <= 0.0 and !dead:
 			die(area.get_parent().caster)
+			explode(area.get_knockback())
 			
 func die(killer):
 	dead = true
@@ -46,6 +49,15 @@ func die(killer):
 	if(rand_range(0.0,1.0)) < drop_rate:
 		drop(killer.get_held_items())
 	queue_free()
+	
+func explode(direction):
+	if death_explosion:
+		var explosion :CPUParticles2D= death_explosion.instance()
+		get_parent().add_child(explosion)
+		explosion.position = position
+		explosion.direction = direction
+		explosion.color = modulate
+
 func drop(exceptions:Array):
 	var drop = DropTable.roll(exceptions).instance()
 	get_parent().add_child(drop)

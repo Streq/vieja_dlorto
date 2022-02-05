@@ -34,7 +34,6 @@ spell = ExtResource( 3 )
 [node name="cooldown" parent="." index="6"]
 wait_time = 0.1
 
-[connection signal="cast" from="." to="cast_point" method="cast"]
 [connection signal="cast" from="." to="cast_point2" method="cast"]
 [connection signal="cast" from="." to="cast_point3" method="cast"]
 [connection signal="cast" from="." to="cast_point4" method="cast"]

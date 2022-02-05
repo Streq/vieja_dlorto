@@ -1,0 +1,14 @@
+shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color : hint_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+void fragment()
+{
+	vec4 pixel_color = texture(TEXTURE, UV);
+	if (pixel_color.a != 0.0) {
+		COLOR.r=1.0;
+		COLOR.g=1.0;
+		COLOR.b=1.0;
+	}
+}

@@ -11,7 +11,6 @@ max_health = 5.0
 drop_rate = 0.2
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 1, 1, 1, 1 )
 scale = Vector2( 0.75, 1 )
 
 [node name="hitbox" parent="." index="2"]

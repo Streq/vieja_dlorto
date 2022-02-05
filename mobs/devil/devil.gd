@@ -16,6 +16,8 @@ var target = null
 var team = 1
 var dead = false
 
+onready var anim = $AnimationPlayer
+
 func target_player():
 	var tree = get_tree()
 	if tree:
@@ -39,6 +41,7 @@ func _on_hurtbox_area_entered(area):
 	if area.team != team:
 		velocity += area.get_knockback()
 		health -= area.get_damage()
+		anim.play("hurt")
 		if health <= 0.0 and !dead:
 			die(area.get_parent().caster)
 			explode(area.get_knockback())

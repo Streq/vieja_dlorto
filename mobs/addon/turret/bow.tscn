@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://mobs/addon/turret/bow.gd" type="Script" id=1]
-[ext_resource path="res://bow.png" type="Texture" id=2]
+[ext_resource path="res://asset/texture/bow.png" type="Texture" id=2]
 [ext_resource path="res://mobs/addon/turret/arrow.tscn" type="PackedScene" id=3]
 
 [node name="bow" type="Node2D"]

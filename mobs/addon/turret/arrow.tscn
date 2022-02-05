@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://spell.tscn" type="PackedScene" id=1]
-[ext_resource path="res://arrow.png" type="Texture" id=2]
+[ext_resource path="res://asset/texture/arrow.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.2236, 2.812 )

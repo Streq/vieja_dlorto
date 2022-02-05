@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://spell.png" type="Texture" id=1]
+[ext_resource path="res://asset/texture/spell.png" type="Texture" id=1]
 [ext_resource path="res://spell.gd" type="Script" id=2]
 [ext_resource path="res://hitbox.gd" type="Script" id=3]
 

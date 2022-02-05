@@ -2,7 +2,7 @@
 
 [ext_resource path="res://wand.gd" type="Script" id=1]
 [ext_resource path="res://spell.tscn" type="PackedScene" id=2]
-[ext_resource path="res://wand.png" type="Texture" id=3]
+[ext_resource path="res://asset/texture/wand.png" type="Texture" id=3]
 
 [node name="wand" type="Node2D"]
 use_parent_material = true

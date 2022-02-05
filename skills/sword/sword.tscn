@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://skills/sword/sword.gd" type="Script" id=1]
-[ext_resource path="res://sword.png" type="Texture" id=3]
+[ext_resource path="res://asset/texture/sword.png" type="Texture" id=3]
 [ext_resource path="res://skills/sword/hitbox.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]

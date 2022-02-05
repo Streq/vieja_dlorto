@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="vieja_dlorto"
 run/main_scene="res://main.tscn"
-config/icon="res://icon.png"
+config/icon="res://asset/texture/icon.png"
 
 [autoload]
 

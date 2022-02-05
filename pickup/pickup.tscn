@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://weapon_tile.png" type="Texture" id=1]
+[ext_resource path="res://asset/texture/weapon_tile.png" type="Texture" id=1]
 [ext_resource path="res://pickup/pickup.gd" type="Script" id=2]
 [ext_resource path="res://pickup/effect.gd" type="Script" id=3]
 

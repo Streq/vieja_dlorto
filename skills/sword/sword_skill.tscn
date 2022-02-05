@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://skills/hand_skill.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sword_tile.png" type="Texture" id=2]
+[ext_resource path="res://asset/texture/sword_tile.png" type="Texture" id=2]
 [ext_resource path="res://skills/sword/sword.tscn" type="PackedScene" id=3]
 [ext_resource path="res://skills/sword/sword_skill.gd" type="Script" id=4]
 

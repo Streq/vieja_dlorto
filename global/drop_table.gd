@@ -3,6 +3,7 @@ extends Node
 var table = [
 	{"name": "sword", "drop":preload("res://skills/sword/sword_pickup.tscn"), "rate":1.0},
 	{"name": "wand", "drop":preload("res://skills/wand/wand_pickup.tscn"), "rate":1.0},
+	{"name": "shotgun", "drop":preload("res://skills/shotgun/shotgun_pickup.tscn"), "rate":1.0},
 	{"name": "teleport", "drop":preload("res://skills/teleport/teleport_pickup.tscn"), "rate":1.0},
 	{"name": "health", "drop":preload("res://pickup/health/health.tscn"), "rate":1.0},
 ]

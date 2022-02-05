@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://skills/hand_skill.gd" type="Script" id=1]
+[ext_resource path="res://skills/shotgun/shotgun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asset/texture/blast_spell_tile.png" type="Texture" id=3]
+
+[node name="shotgun_skill" type="Node2D"]
+script = ExtResource( 1 )
+skill_name = "shotgun"
+weapon = ExtResource( 2 )
+texture = ExtResource( 3 )

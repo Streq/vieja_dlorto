@@ -1,15 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://skills/wand/wand.gd" type="Script" id=1]
 [ext_resource path="res://skills/wand/spell.tscn" type="PackedScene" id=2]
 [ext_resource path="res://asset/texture/wand.png" type="Texture" id=3]
+[ext_resource path="res://skills/wand/cast_point.gd" type="Script" id=4]
 
 [node name="wand" type="Node2D"]
 use_parent_material = true
 script = ExtResource( 1 )
-spell = ExtResource( 2 )
 
 [node name="wand_sprite" type="Sprite" parent="."]
 use_parent_material = true
 position = Vector2( -20, -4 )
 texture = ExtResource( 3 )
+
+[node name="cast_point" type="Node2D" parent="."]
+script = ExtResource( 4 )
+spell = ExtResource( 2 )
+
+[node name="cooldown" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.001
+
+[connection signal="cast" from="." to="cast_point" method="cast"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

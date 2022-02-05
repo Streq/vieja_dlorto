@@ -5,7 +5,8 @@
 [ext_resource path="res://asset/texture/spell.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.2236, 2.812 )
+resource_local_to_scene = true
+extents = Vector2( 24, 2.812 )
 
 [node name="spell" type="Node2D"]
 script = ExtResource( 2 )

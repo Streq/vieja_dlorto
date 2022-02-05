@@ -1,21 +1,29 @@
 extends Node2D
 
-export var spell : PackedScene
+signal cast(caster)
+
 export var main_spell_cost := 1.0
 export var continuous: bool = true
+
+onready var cooldown_timer = $cooldown
+var cooldown := false
+
 
 func set_team(team):
 	$hitbox.team = team
 
 func cast(caster):
-	caster.swing.rotation_degrees = 0
-	caster.mana -= main_spell_cost
-	caster.shooting = true
-	var new_spell = spell.instance()
-	new_spell.set_as_toplevel(true)
-	new_spell.position = global_position
-	new_spell.rotation = global_rotation
-	new_spell.inertia = caster.velocity
-	new_spell.caster = caster
-	new_spell.team = caster.team
-	add_child(new_spell)
+	if !cooldown:
+		cooldown = true
+		caster.swing.rotation_degrees = 0
+		caster.mana -= main_spell_cost
+		caster.shooting = true
+		emit_signal("cast", caster)
+		cooldown_timer.start()
+
+
+
+
+
+func _on_cooldown_timeout():
+	cooldown = false

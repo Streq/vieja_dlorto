@@ -292,6 +292,7 @@ position = Vector2( -1088, 840 )
 rotation = -1.57077
 
 [node name="Timer" type="Timer" parent="player/spawner"]
+wait_time = 2.0
 autostart = true
 
 [node name="mobs" type="Node" parent="player/spawner"]

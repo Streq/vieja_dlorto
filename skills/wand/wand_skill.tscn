@@ -6,5 +6,6 @@
 
 [node name="wand_skill" type="Node2D"]
 script = ExtResource( 2 )
+skill_name = "wand"
 weapon = ExtResource( 3 )
 texture = ExtResource( 1 )

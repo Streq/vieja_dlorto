@@ -276,7 +276,6 @@ float_padding = 3
 
 [node name="player" parent="." groups=["player"] instance=ExtResource( 3 )]
 material = SubResource( 6 )
-speed = 2000.0
 gravity = 800.0
 
 [node name="spawner" type="Node2D" parent="player"]

@@ -7,5 +7,6 @@
 
 [node name="sword_skill" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
+skill_name = "sword"
 weapon = ExtResource( 3 )
 texture = ExtResource( 2 )

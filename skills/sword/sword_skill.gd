@@ -10,6 +10,7 @@ func enter(witch):
 	instance.set_team(witch.team)
 	witch.hand.add_child(instance)
 	witch.swing.rotation_degrees = -90
+	instance.caster = witch
 func exit(witch):
 	witch.hand.remove_child(instance)
 	witch.swing.rotation_degrees = 0

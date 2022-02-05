@@ -24,6 +24,7 @@ onready var just_pressed = [false, false]
 
 var pickups = []
 
+
 var dir := Vector2.ZERO
 var team = 0
 
@@ -127,3 +128,6 @@ func pickup_entered(pickup):
 
 func pickup_exited(pickup):
 	pickups.remove(pickups.find(pickup))
+	
+func get_held_items():
+	return [skills[0].skill_name if skills[0] else null, skills[1].skill_name if skills[1] else null]

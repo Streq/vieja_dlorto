@@ -12,8 +12,8 @@ extents = Vector2( 20.5038, 22.1558 )
 extents = Vector2( 20.8187, 21.8408 )
 
 [node name="devil" type="Node2D"]
-position = Vector2( 314.879, 35.4854 )
 script = ExtResource( 1 )
+drop_rate = 0.1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

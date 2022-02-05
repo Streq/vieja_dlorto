@@ -27,7 +27,8 @@ func _ready():
 	$hitbox.team = team
 	
 func _physics_process(delta):
-	velocity += to_local(target.global_position).normalized()*speed*delta
+	if target:
+		velocity += to_local(target.global_position).normalized()*speed*delta
 	velocity = lerp(velocity, Vector2.ZERO, delta)
 	position += velocity*delta
 
@@ -37,16 +38,16 @@ func _on_hurtbox_area_entered(area):
 		velocity += area.get_knockback()
 		health -= area.get_damage()
 		if health <= 0.0 and !dead:
-			die()
+			die(area.get_parent().caster)
 			
-func die():
+func die(killer):
 	dead = true
 	emit_signal("dead")
 	if(rand_range(0.0,1.0)) < drop_rate:
-		drop()
+		drop(killer.get_held_items())
 	queue_free()
-func drop():
-	var drop = DropTable.roll().instance()
+func drop(exceptions:Array):
+	var drop = DropTable.roll(exceptions).instance()
 	get_parent().add_child(drop)
 	drop.position = position
 func _on_hitbox_area_entered(area):

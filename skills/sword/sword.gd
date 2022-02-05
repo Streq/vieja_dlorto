@@ -5,6 +5,7 @@ export var continuous: bool = true
 
 var casting = false
 var odd_swing = true
+var caster = null
 
 func set_team(team):
 	$hitbox.team = team

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://mobs/devil/devil_hitbox.gd" type="Script" id=1]
 [ext_resource path="res://mobs/devil/devil.gd" type="Script" id=2]
-[ext_resource path="res://hurtbox.gd" type="Script" id=3]
+[ext_resource path="res://hitbox/hurtbox.gd" type="Script" id=3]
 [ext_resource path="res://asset/texture/devil.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=4]

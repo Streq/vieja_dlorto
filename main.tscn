@@ -2,7 +2,7 @@
 
 [ext_resource path="res://asset/texture/icon.png" type="Texture" id=1]
 [ext_resource path="res://mobs/devil/devil.tscn" type="PackedScene" id=2]
-[ext_resource path="res://witch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/witch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://mobs/spawner/spawner.gd" type="Script" id=4]
 [ext_resource path="res://asset/texture/bar_progress.png" type="Texture" id=5]
 [ext_resource path="res://asset/texture/bar_background.png" type="Texture" id=6]

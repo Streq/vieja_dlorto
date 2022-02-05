@@ -127,7 +127,9 @@ func pickup_entered(pickup):
 	pickups.append(pickup)
 
 func pickup_exited(pickup):
-	pickups.remove(pickups.find(pickup))
+	var idx = pickups.find(pickup)
+	if idx != -1:
+		pickups.remove(idx)
 	
 func get_held_items():
 	return [skills[0].skill_name if skills[0] else null, skills[1].skill_name if skills[1] else null]

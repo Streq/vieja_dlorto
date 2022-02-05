@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed := 2000.0
+export var speed := 2000.0
 
 var inertia := Vector2.ZERO
 var caster = null

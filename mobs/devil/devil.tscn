@@ -16,6 +16,7 @@ script = ExtResource( 2 )
 drop_rate = 0.1
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 4 )
 
 [node name="hurtbox" type="Area2D" parent="."]

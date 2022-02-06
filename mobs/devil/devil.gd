@@ -63,7 +63,7 @@ func explode(direction):
 
 func drop(exceptions:Array):
 	var drop = DropTable.roll(exceptions).instance()
-	get_parent().add_child(drop)
 	drop.position = position
+	get_parent().call_deferred("add_child",drop)
 func _on_hitbox_area_entered(area):
 	pass # Replace with function body.

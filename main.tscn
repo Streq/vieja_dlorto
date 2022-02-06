@@ -438,8 +438,8 @@ tile_data = PoolIntArray( -18152689, 0, 0, -18152688, 0, 0, -18152687, 0, 0, -18
 [node name="skill_pickup" parent="." instance=ExtResource( 10 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 0, 36 )
-scale = Vector2( 250, 1 )
+position = Vector2( 0, 2470 )
+scale = Vector2( 250, 20 )
 collision_layer = 8
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]

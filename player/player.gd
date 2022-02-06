@@ -19,6 +19,7 @@ var shooting = false
 onready var hand = $pivot/arm/swing_node/hand
 onready var swing = $pivot/arm/swing_node
 onready var animation = $AnimationPlayer
+onready var hurt_anim = $hurt_anim
 onready var skills = [null, null]
 onready var just_pressed = [false, false]
 
@@ -101,7 +102,7 @@ func _on_hurtbox_area_entered(area):
 	if area.team != team:
 		self.health -= area.get_damage()
 		velocity += area.get_knockback(self)
-
+		hurt_anim.play("hurt")
 func set_mana(val):
 	mana = min(val, max_mana)
 	emit_signal("mana_changed", mana)

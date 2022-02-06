@@ -7,7 +7,7 @@ var kills := 0
 
 func _ready():
 	emit_signal("highscore", Global.highscore)
-
+	
 func _on_player_dead():
 	if kills > Global.highscore:
 		Global.highscore = kills

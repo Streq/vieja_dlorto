@@ -10,7 +10,7 @@ export var max_health := 10.0
 export (float) var health := max_health
 export (float) var drop_rate := 0.2
 export var death_explosion : PackedScene
-
+export var knockback_factor = 1.0
 
 var target = null
 var team = 1
@@ -39,7 +39,7 @@ func _physics_process(delta):
 
 func _on_hurtbox_area_entered(area):
 	if area.team != team:
-		velocity += area.get_knockback()
+		velocity += area.get_knockback()*knockback_factor
 		health -= area.get_damage()
 		anim.play("hurt")
 		if health <= 0.0 and !dead:

@@ -2,6 +2,12 @@ extends Node
 var highscore = 0
 const SAVE_PATH := "user://save.res"
 
+var difficulty = {
+	"easy":{"spawn_time":5.0},
+	"medium":{"spawn_time":2.5},
+	"hard":{"spawn_time":1.0}
+}
+
 func _ready():
 	load_game()
 

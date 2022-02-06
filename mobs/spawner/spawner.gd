@@ -18,3 +18,8 @@ func _on_Timer_timeout():
 	pass # Replace with function body.
 
 
+
+
+func begin(difficulty):
+	$Timer.wait_time = Global.difficulty[difficulty].spawn_time
+	$Timer.start()

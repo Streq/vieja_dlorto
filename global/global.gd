@@ -19,3 +19,12 @@ func save_game():
 	savegame.open(SAVE_PATH, File.WRITE)
 	savegame.store_var(save_data)
 	savegame.close()
+
+func _input(event):
+	if event.is_action_pressed("fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+	if event.is_action_pressed("ui_cancel"):
+		OS.window_fullscreen = false
+		
+		
+		

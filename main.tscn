@@ -222,6 +222,18 @@ __meta__ = {
 thing = "spawn_time"
 float_padding = 3
 
+[node name="wave" type="Label" parent="HUD/HBoxContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 200.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 14 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+thing = "wave"
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]

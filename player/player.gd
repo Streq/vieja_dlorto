@@ -97,12 +97,16 @@ func _input(event):
 			pickups[0].consume()
 
 
-
+var invulnerable = false
 func _on_hurtbox_area_entered(area):
 	if area.team != team:
-		self.health -= area.get_damage()
 		velocity += area.get_knockback(self)
-		hurt_anim.play("hurt")
+		if !invulnerable:
+			invulnerable = true
+			hurt_anim.play("hurt")
+			self.health -= area.get_damage()
+			yield(get_tree().create_timer(0.5),"timeout")
+			invulnerable = false
 func set_mana(val):
 	mana = min(val, max_mana)
 	emit_signal("mana_changed", mana)

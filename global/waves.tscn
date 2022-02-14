@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://mechanic/wave/wave.tscn" type="PackedScene" id=1]
+
+[node name="waves" type="Node"]
+
+[node name="wave" parent="." instance=ExtResource( 1 )]
+spawn_time = 3.0
+
+[editable path="wave"]

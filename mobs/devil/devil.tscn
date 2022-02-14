@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://mobs/devil/devil_hitbox.gd" type="Script" id=1]
 [ext_resource path="res://mobs/devil/devil.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://asset/texture/devil.png" type="Texture" id=4]
 [ext_resource path="res://mobs/devil/death_particles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://asset/shader/one_color.gdshader" type="Shader" id=6]
+[ext_resource path="res://asset/sound/juij.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 20.5038, 22.1558 )
@@ -39,6 +40,9 @@ modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 drop_rate = 0.1
 death_explosion = ExtResource( 5 )
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true

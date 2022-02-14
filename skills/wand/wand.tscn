@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://skills/wand/wand.gd" type="Script" id=1]
 [ext_resource path="res://skills/wand/spell.tscn" type="PackedScene" id=2]
 [ext_resource path="res://asset/texture/wand.png" type="Texture" id=3]
 [ext_resource path="res://skills/wand/cast_point.gd" type="Script" id=4]
+[ext_resource path="res://asset/sound/rrr_loop.wav" type="AudioStream" id=5]
 
 [node name="wand" type="Node2D"]
 use_parent_material = true
@@ -21,6 +22,9 @@ spell = ExtResource( 2 )
 [node name="cooldown" type="Timer" parent="."]
 process_mode = 0
 wait_time = 0.001
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="cast" from="." to="cast_point" method="cast"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

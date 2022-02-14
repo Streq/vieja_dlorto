@@ -7,7 +7,7 @@ signal drop_something(at)
 export var speed := 500.0
 var velocity := Vector2.ZERO
 export var max_health := 10.0 
-export (float) var health := max_health
+onready var health := max_health
 export (float) var drop_rate := 0.2
 export var death_explosion : PackedScene
 export var knockback_factor = 1.0
@@ -17,6 +17,7 @@ var team = 1
 var dead = false
 
 onready var anim = $AnimationPlayer
+onready var death_sound = $death_sound
 
 func target_player():
 	var tree = get_tree()
@@ -56,11 +57,13 @@ func die(killer):
 func explode(direction):
 	if death_explosion:
 		var explosion :CPUParticles2D= death_explosion.instance()
+		remove_child(death_sound)
+		explosion.add_child(death_sound)
 		get_parent().add_child(explosion)
 		explosion.position = position
 		explosion.direction = direction
 		explosion.color = modulate
-
+		death_sound.play()
 func drop(exceptions:Array):
 	var drop = DropTable.roll(exceptions).instance()
 	drop.position = position

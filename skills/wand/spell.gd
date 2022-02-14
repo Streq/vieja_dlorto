@@ -6,6 +6,8 @@ var inertia := Vector2.ZERO
 var caster = null
 var team
 
+onready var audio= $AudioStreamPlayer2D
+
 func _ready():
 	$Timer.connect("timeout",self,"queue_free")
 	$Timer.start()
@@ -25,4 +27,11 @@ func get_velocity():
 
 func _on_hitbox_area_entered(area):
 	if area.team != team:
+		
+		remove_child(audio)
+		get_parent().add_child(audio)
+		audio.global_position = global_position
+		audio.connect("finished", audio, "queue_free")
+		audio.play()
 		queue_free()
+		

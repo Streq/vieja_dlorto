@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://mobs/devil/devil_hitbox.gd" type="Script" id=1]
 [ext_resource path="res://mobs/devil/devil.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://mobs/devil/death_particles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hitbox/hurtbox.gd" type="Script" id=6]
 [ext_resource path="res://asset/texture/devil.png" type="Texture" id=7]
+[ext_resource path="res://asset/sound/juij.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 20.5038, 22.1558 )
@@ -82,6 +83,9 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="death_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
